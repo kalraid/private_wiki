@@ -3,6 +3,7 @@
 `kalraid`의 개인 프로젝트들이 얼마나 진행됐는지 재고 관리하는 대시보드입니다.
 
 - 경력 요약(업무): [career/README.md](career/README.md)
+- 전체 프로젝트 평가(잘한 점·아쉬운 점·제안): [review/README.md](review/README.md)
 - 저장소별 상세 분석과 관계도: [repos/README.md](repos/README.md)
 - 진행도 측정 스크립트: [scripts/measure.sh](scripts/measure.sh)
 
@@ -71,4 +72,5 @@
 | 2026-11-09 | 경력 요약 페이지 추가 (career/README.md) |
 | 2026-11-09 | VRChatAINpc에서 DnD 프로젝트를 dnd-project 저장소로 분리, 집계 반영 |
 | 2026-11-10 | dnd-project에서 ETF 코드를 etfholdings(새 저장소)로, 마비노기 코드를 mabi-look-matcher `legacy/`로 분리 (dnd-project 이력에서도 제거) |
+| 2026-11-10 | 전체 프로젝트 평가 문서 추가 (review/README.md) |
 | 2026-11-09 | 재측정: private 저장소를 원격 최신 기준으로 측정 (primacy-index 커밋 5→91·Sprint 0 완료, Lord-s-Daughter 웹 79/85·도트 32/120). public 저장소는 변동 없음 |
