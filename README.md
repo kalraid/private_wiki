@@ -5,12 +5,15 @@
 - 저장소별 상세 분석과 관계도: [repos/README.md](repos/README.md)
 - 진행도 측정 스크립트: [scripts/measure.sh](scripts/measure.sh)
 
-> 마지막 측정: **2026-11-09** (공개 저장소 기준)
+> 마지막 측정: **2026-11-09** (공개 저장소 + 로컬에 있는 private 저장소 3개)
 
 ## 진행 중 / 최근 프로젝트
 
 | 프로젝트 | 상태 | 진행도 | 측정 근거 | 마지막 커밋 | 다음 할 일 |
 |---|---|---|---|---|---|
+| [primacy-index](https://github.com/kalraid/primacy-index) 🔒 | 🟡 착수 | Sprint 0-1 ✅ | 커밋 5 · ADR 25 (TODO 문서 없음) | 2026-08-12 | Sprint 0 2단계 (경제 엔진 확장) |
+| [erebos_academy_survival](https://github.com/kalraid/erebos_academy_survival) 🔒 | 🟡 POC 완료 | POC `██████████` 98% / 설계 14% | TODO 71/72 · GRILL 29/204 | 2026-08-10 | 설계 질의(GRILL) 정리 → 본 구현 |
+| [Lord-s-Daughter](https://github.com/kalraid/Lord-s-Daughter) 🔒 | 🟡 웹 전환 중 | `█████████░` 86% | Z_DOC/TODO 37/43 · TODO_GRILL 8/15 | 2026-07-09 | `pivot/web-migration` 브랜치 웹 이식 마무리 |
 | [game-vault](https://github.com/kalraid/game-vault) | 🟡 일시정지 | `██████████` 95% | TODO 20/21 | 2026-07-08 | 남은 TODO 1개, 첫 게임 모듈 연동 |
 | [rolling_vantage](https://github.com/kalraid/rolling_vantage) | 🟡 설계 중 | `███░░░░░░░` 32% | GRILL_TODO 32/100 (설계 질의) | 2026-07-21 | 설계 질의 정리 → 구현 착수 |
 | [sound-to-visual-web](https://github.com/kalraid/sound-to-visual-web) | 🟡 일시정지 | `█████████░` 92% | TODO 49/53 | 2026-06-25 | 남은 TODO 4개, Phase 1.5(곡 검색) |
@@ -39,10 +42,12 @@
   - 🟡 일시정지: 1년 안에 커밋 있음
   - ⚫ 중단/보관: 1년 넘게 커밋 없음
   - ✅ 완료: 목표(제출·배포)를 달성함
-- private 저장소는 아직 측정 대상에 넣지 않았습니다.
+- 🔒 표시는 private 저장소입니다. GitHub API로 볼 수 없어서 `D:\sources`의 로컬 클론(현재 체크아웃 브랜치)으로 측정합니다.
+- 한 저장소에 TODO 문서가 여러 개면 목적별로 따로 표기합니다(구현 TODO와 설계 질의 GRILL 구분).
 
 ## 측정 이력
 
 | 날짜 | 변경 |
 |---|---|
 | 2026-11-09 | 대시보드 첫 작성 (공개 저장소 13개 분석) |
+| 2026-11-09 | private 저장소 3개 추가 (Lord-s-Daughter, erebos_academy_survival, primacy-index) |

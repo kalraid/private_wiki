@@ -1,7 +1,7 @@
 # kalraid GitHub 저장소 분석
 
-> 작성일: 2026-11-09 · 대상: `github.com/kalraid`의 **공개 저장소 21개**(직접 만든 저장소 13개 + 포크 8개)
-> private 저장소는 조회 권한 없이 분석해서 빠져 있습니다. 본문에 이름만 나오는 비공개 프로젝트(예: Godot판 *Lord's Daughter*)는 다른 저장소 문서에 적힌 내용으로만 짐작했습니다.
+> 작성일: 2026-11-09 · 대상: `github.com/kalraid`의 **공개 저장소 21개**(직접 만든 저장소 13개 + 포크 8개) + `D:\sources`에 로컬 클론이 있는 **private 저장소 3개**(🔒)
+> 로컬에 없는 다른 private 저장소(예: `erebos_chronicles_worldbook`, `erebos_chronicles_npcs`)는 다른 저장소 문서에 적힌 내용으로만 짐작했습니다.
 
 ---
 
@@ -22,6 +22,9 @@
 | 2026 | [sound-to-visual-web](#sound-to-visual-web) | MIDI/MusicXML을 3D 지형+큐브로 시각화 | FastAPI, music21, Three.js, Tone.js | 39 |
 | 2026 | [game-vault](#game-vault) | 브라우저 게임용 포털 (인증·세이브·실시간 SDK) | Vite+React, Express, Prisma, SQLite | 16 |
 | 2026 | [rolling_vantage](#rolling_vantage) | 그리드 소환 전술 + 주사위 판정을 섞은 웹 게임 (설계 단계) | TypeScript (설계 문서 위주) | 14 |
+| 2026 | [Lord-s-Daughter](#lord-s-daughter-) 🔒 | 육성+전략+영지경영 시뮬 (프린세스 메이커 계열), Godot에서 웹으로 전환 | Godot 4 → React + PixiJS 8 | 1547 |
+| 2026 | [erebos_academy_survival](#erebos_academy_survival-) 🔒 | Erebos Chronicles 세계관의 턴제 육성 + 탄막 게임 | Godot 4.6 (GDScript), GUT | 103 |
+| 2026 | [primacy-index](#primacy-index-) 🔒 | 논문 기반 경제모형으로 한국 지역경제를 시뮬레이션하는 Steam 게임 | Godot + C# 엔진 | 5 |
 | 2026 | private_wiki | 이 위키 | Markdown | – |
 
 ---
@@ -55,8 +58,15 @@ flowchart LR
     STV[sound-to-visual-web]
     GV[game-vault]
     RV[rolling_vantage]
-    LD([Lord's Daughter<br/>비공개 Godot 게임])
+    LD[Lord-s-Daughter 🔒<br/>Godot → Web]
+    ER[erebos_academy_survival 🔒]
+    EW([erebos_chronicles<br/>worldbook / npcs 🔒])
+    PI[primacy-index 🔒]
   end
+
+  EW -- "세계관·NPC 원본 (integrate.md 요청 채널)" --> ER
+  LD -. "육성 시뮬 장르 · Godot 경험" .-> ER
+  LD -. "Godot 경험 · ADR 문서 방식" .-> PI
 
   CS -- "etfholdings.co.kr 채팅 백엔드" --> VR
   INS -- "관리자 템플릿 포크" --> HL
@@ -77,11 +87,14 @@ flowchart LR
 2. **플랫폼과 그 위에 올라갈 게임**
    - `game-vault`는 게임 로직 없이 인증·세이브·계정 데이터·실시간 이벤트만 `postMessage` SDK로 제공하는 **포털**입니다.
    - `rolling_vantage/gamevault-handoff/`에는 game-vault의 `GAME_MODULE.md`·`shared/` SDK 타입·`sample-game`이 그대로 복사돼 있습니다. **rolling_vantage는 game-vault에 붙일 첫 외부 게임 모듈 후보**입니다.
-   - game-vault의 `0034-godot-to-web-pivot.md`를 보면, 비공개 Godot 4 게임 *Lord's Daughter*를 웹으로 옮기면서 서버 저장소가 필요해졌고, 그 결과물이 game-vault입니다. 포털의 기본 등록 게임 ID도 `lords-daughter`입니다.
+   - game-vault의 `0034-godot-to-web-pivot.md`(원본은 Lord-s-Daughter의 ADR-0034)를 보면, *Lord's Daughter*를 Godot에서 웹으로 옮기면서 세이브·계정을 맡을 서버가 필요해졌고, 그 결과물이 game-vault입니다. 포털의 기본 등록 게임 ID도 `lords-daughter`입니다. **game-vault는 Lord-s-Daughter와 rolling_vantage가 함께 쓸 공용 플랫폼**입니다.
+   - `erebos_academy_survival`은 세계관(`erebos_chronicles_worldbook`)과 NPC(`erebos_chronicles_npcs`) 저장소를 원본으로 참조합니다. 요청이 생기면 각 저장소의 `as/system/integrate.md`에 "Open Requests"로 남기는, 저장소 사이의 요청 채널을 운영합니다.
 3. **주제가 이어지는 저장소**
    - 서브컬처/홀로라이브: `HoloLibrary(API)` → `HoloThello`(홀로라이브풍 캐릭터 오셀로).
    - 넥슨 온라인 게임 팬 툴: `dnfParty`(던파) → `mabi-look-matcher`(마비노기).
    - AI 활용: `VRChatAINpc`(2020, 직접 짠 NLP/MSA 구상) → `mafia-game-web`(2026, LLM 에이전트 + RAG).
+   - 육성 시뮬레이션: `Lord-s-Daughter`(프린세스 메이커 계열) → `erebos_academy_survival`(학원 육성 + 탄막).
+   - 경제·시뮬레이션: `VRChatAINpc/DnD`(ETF 정보 사이트) → `primacy-index`(지역경제 시뮬레이션 게임).
 4. **포크 저장소는 업무와 학습용 참고 자료**: 모니터링(NetApp exporter, SigNoz OTel, Pinpoint Helm), DB/가상화(Tibero Docker, libvirtd), 아키텍처 예제(Spring Boot+Vue, Azure Node+Mongo). 2025년 dnfParty의 Helm 차트 기반 K8s 배포에 이 경험이 쓰인 것으로 보입니다.
 
 ---
@@ -166,6 +179,30 @@ flowchart LR
 - **상태**: 아직 코드보다 `CONTEXT.md` + ADR 3개 + `GRILL_TODO.md` 같은 설계 문서가 중심입니다.
 - **관계**: `gamevault-handoff/`에 game-vault SDK 계약이 복사돼 있으므로 **game-vault 위에서 돌아갈 게임 모듈**로 계획된 것입니다.
 
+### Lord-s-Daughter 🔒
+- **기간**: 2026-04-21 ~ 2026-07 (커밋 1547개로 압도적 1위, 7월 이후만 82개)
+- **설명**: 2D 육성 시뮬레이션 기반 RPG + 전략 시뮬 복합 게임입니다. 10~18세(8년) 동안 육성 시뮬, 비주얼 노벨, RPG 탐험·전투, 영지경영·전략 레이어가 순서대로 펼쳐집니다. 모티브는 프린세스 메이커 4, Victoria 3, 삼국지 13, 문명 6입니다.
+- **계기**: 기다리던 *프린세스 메이커: 예언의 아이들*이 사실상 무산되자 "내가 직접 만들겠다"며 시작했습니다.
+- **기술 변화**: Godot 4(GDScript 125개, 씬 74개)로 시작했다가 2026-07-06 ADR-0034로 **웹(React 18 + PixiJS 8 + Vite)으로 전환**했습니다. 작업 브랜치는 `pivot/web-migration`, 코드는 `web/src/`입니다.
+- **개발 방식**: `ROLES/`에 역할(orchestrator, web_common, web_frontend, web_logic, qa, sound, visual_gen, content_event)을 정의하고, Claude·Codex·Cursor·Gemini 같은 여러 AI 에이전트가 역할별로 작업하는 **멀티 에이전트 개발 체계**입니다(`AGENTS.md`, `CLAUDE.md`, `CODEX.md`, `CURSOR.md`, `GEMINI.md`). 커밋 접두어 `WC-`/`WF-`/`WL-`로 역할을 구분합니다.
+- **진행도**: Z_DOC/TODO 37/43, 설계 질의 TODO_GRILL 8/15.
+
+### erebos_academy_survival 🔒
+- **기간**: 2026-07-27 ~ 2026-08 (커밋 103개)
+- **설명**: Erebos Chronicles 세계관을 배경으로 한 **턴제 캐릭터 육성 + 탄막** 게임입니다. 이벤트 파트 → 노드(스킬 트리) 배분 → 전투(탄막) 파트를 돌고, 직업 카드 같은 영구 자산을 남기는 회귀 루프 구조입니다.
+- **스택**: Godot 4.6, GDScript, GUT 유닛 테스트, Windows/Android(갤럭시 터치 테스트) 익스포트. 이벤트·카드·노드 데이터는 JSON 원본을 Godot Resource로 변환하는 파이프라인을 씁니다.
+- **문서**: `CONTEXT-MAP.md`, ADR 7개, `GRILL.md`(설계 질의 204개), `scenario/`, `system/`.
+- **관계**: 세계관과 NPC는 별도 private 저장소(`erebos_chronicles_worldbook`, `erebos_chronicles_npcs`)가 원본입니다. 이 저장소는 게임 시스템과 실제 소스만 맡습니다.
+- **진행도**: POC TODO 71/72 완료, 설계 GRILL 29/204.
+
+### primacy-index 🔒
+- **기간**: 2026-08-12~ (커밋 5개, 막 시작함)
+- **설명**: 17개 광역·226개 기초자치단체 전부의 노동자·기업·산업·주택·재정을 **논문 기반 경제모형**(Hopenhayn 진입·퇴출, 신경제지리학 집적 티핑, 신용제약형 주택시장 등)으로 계산하는 지역경제 시뮬레이션 게임입니다. 반도체·AI/SW·자동차 3개 특화산업은 앵커도시에서 전체 방정식으로 계산하고, 나머지 지역은 범용 1/2/3차 산업 모델을 씁니다. Steam(PC)에 먼저 출시할 계획입니다.
+- **이름 변천**: GRAVITY: Korea → GRAVITAS → PRIMACY INDEX (상표 충돌 위험 때문, ADR-0015/0016).
+- **스택**: Godot + C# 코어 엔진(ADR-0009), 결정론과 레이어 경계 강제(ADR-0025).
+- **문서**: ADR 25개(전 저장소 중 최다), 경제모형 명세, UI 초안, 이론 참고 목록.
+- **진행도**: Sprint 0 1단계 완료(상태 모델, GravityKernel, 테스트 인프라).
+
 ---
 
 ## 4. 포크 저장소 (참고/업무용)
@@ -194,4 +231,5 @@ flowchart LR
    - 2025년: 게임(HoloThello)과 게임 팬 툴(dnfParty)을 실제 배포 수준까지 만들었습니다.
    - 2026년: **`CONTEXT.md`(도메인 용어집) + `docs/adr/`(결정 기록) + TODO** 형식이 mabi-look-matcher, sound-to-visual-web, game-vault, rolling_vantage에서 똑같이 반복됩니다. 설계를 문서로 먼저 굳힌 뒤 구현하는 방식이 자리 잡았습니다.
    - 기술 스택도 Java/Spring 중심에서 **Python(FastAPI) + TypeScript(Vite/React/Next/Three.js)** 중심으로 옮겨 갔습니다.
+   - 2026년 중반부터는 **본격적인 게임 개발**(Lord-s-Daughter 커밋 1500개 이상, Godot 게임 3개)이 중심이 됐습니다. Lord-s-Daughter에서는 여러 AI 에이전트가 역할을 나눠 맡는 방식까지 실험했습니다.
 5. **반복되는 관심사**: 게임(직접 만들기 + 기존 게임 보조 툴), 서브컬처(홀로라이브), AI(NPC → LLM 에이전트), 시각화(통계 차트 → 3D 음악 시각화).
