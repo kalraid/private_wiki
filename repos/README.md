@@ -10,8 +10,9 @@
 | 시기 | 저장소 | 한 줄 요약 | 주요 스택 | 커밋 |
 |---|---|---|---|---|
 | 2018 | [Team_Project](#team_project) | 학원 시절 팀 프로젝트 모음 (의약품/건강 정보 사이트) | Java, Spring MVC, JSP | 151 |
-| 2020 | [VRChatAINpc](#vrchatainpc) | VRChat을 AI가 플레이하게 만드는 MSA 실험 + ETF 사이트(DnD) | Spring Boot, Flask/Django, RabbitMQ, Vue 2 | 201 |
-| 2021 | [chatserver](#chatserver) | socket.io 채팅 서버 (DnD/ETF 사이트용) | Node.js, Express, socket.io | 37 |
+| 2020 | [VRChatAINpc](#vrchatainpc) | VRChat을 AI가 플레이하게 만드는 MSA 실험 | Spring Boot, Flask/Django, RabbitMQ | 78 |
+| 2020 | [dnd-project](#dnd-project) | 던전앤파이터 파티·시세 도구 + 갤러리 커뮤니티 + ETF·마비노기 (VRChatAINpc에서 분리) | Spring Boot 2.3, Vue 2, Vuetify, MySQL | 120 |
+| 2021 | [chatserver](#chatserver) | socket.io 채팅 서버 (etfholdings.co.kr용) | Node.js, Express, socket.io | 37 |
 | 2021 | [kalraid](#kalraid) | GitHub 프로필 README | Markdown | 2 |
 | 2021 | [HoloLibrary](#hololibrary--hololibraryapi) | 홀로라이브 트위터/유튜브 라이브러리 **프론트엔드** (포크 기반) | Vue 2, Vuetify | 174 |
 | 2021 | [HoloLibraryAPI](#hololibrary--hololibraryapi) | 위 서비스의 **백엔드** + 트위터 크롤링 배치 | Python, Falcon, PostgreSQL | 80 |
@@ -22,9 +23,9 @@
 | 2026 | [sound-to-visual-web](#sound-to-visual-web) | MIDI/MusicXML을 3D 지형+큐브로 시각화 | FastAPI, music21, Three.js, Tone.js | 39 |
 | 2026 | [game-vault](#game-vault) | 브라우저 게임용 포털 (인증·세이브·실시간 SDK) | Vite+React, Express, Prisma, SQLite | 16 |
 | 2026 | [rolling_vantage](#rolling_vantage) | 그리드 소환 전술 + 주사위 판정을 섞은 웹 게임 (설계 단계) | TypeScript (설계 문서 위주) | 14 |
-| 2026 | [Lord-s-Daughter](#lord-s-daughter-) 🔒 | 육성+전략+영지경영 시뮬 (프린세스 메이커 계열), Godot에서 웹으로 전환 | Godot 4 → React + PixiJS 8 | 1547 |
+| 2026 | [Lord-s-Daughter](#lord-s-daughter-) 🔒 | 육성+전략+영지경영 시뮬 (프린세스 메이커 계열), Godot에서 웹으로 전환 | Godot 4 → React + PixiJS 8 | 1586 |
 | 2026 | [erebos_academy_survival](#erebos_academy_survival-) 🔒 | Erebos Chronicles 세계관의 턴제 육성 + 탄막 게임 | Godot 4.6 (GDScript), GUT | 103 |
-| 2026 | [primacy-index](#primacy-index-) 🔒 | 논문 기반 경제모형으로 한국 지역경제를 시뮬레이션하는 Steam 게임 | Godot + C# 엔진 | 5 |
+| 2026 | [primacy-index](#primacy-index-) 🔒 | 논문 기반 경제모형으로 한국 지역경제를 시뮬레이션하는 Steam 게임 | Godot + C# 엔진 | 91 |
 | 2026 | private_wiki | 이 위키 | Markdown | – |
 
 ---
@@ -38,7 +39,8 @@ flowchart LR
   end
 
   subgraph S2["② 사이드 프로젝트기 (2020~2022)"]
-    VR[VRChatAINpc<br/>+ DnD/ETF 사이트]
+    VR[VRChatAINpc]
+    DND[dnd-project<br/>던파·갤러리·ETF]
     CS[chatserver]
     HL[HoloLibrary<br/>front]
     HLA[HoloLibraryAPI<br/>back]
@@ -68,7 +70,8 @@ flowchart LR
   LD -. "육성 시뮬 장르 · Godot 경험" .-> ER
   LD -. "Godot 경험 · ADR 문서 방식" .-> PI
 
-  CS -- "etfholdings.co.kr 채팅 백엔드" --> VR
+  VR -- "2026-11 이력 유지 분리" --> DND
+  DND -. "던파 도구의 후속" .-> DNF
   INS -- "관리자 템플릿 포크" --> HL
   HL -- "REST API 호출" --> HLA
   HL -. "홀로라이브 테마" .-> HT
@@ -83,7 +86,8 @@ flowchart LR
 
 1. **같은 서비스를 이루는 저장소**
    - `HoloLibrary`(Vue 프론트) ↔ `HoloLibraryAPI`(Python 백엔드): 하나의 "홀로라이브 트위터/유튜브 라이브러리" 서비스를 프론트와 백엔드로 나눈 것입니다. 프론트는 회사 사내 템플릿 `kimyearho/in-soft-vue`를 포크해서 시작했습니다.
-   - `chatserver` ↔ `VRChatAINpc/DnD`: chatserver의 CORS 허용 도메인이 `etfholdings.co.kr`인데, 이 사이트가 VRChatAINpc 저장소 안의 `DnDPartes`(Spring Boot, `fund/etf` 패키지)와 `dnd-project`(Vue 2)입니다. **chatserver는 이 ETF 사이트의 실시간 채팅 서버**입니다.
+   - `VRChatAINpc` → `dnd-project`: 원래 VRChatAINpc 저장소 안에서 `DnDPartes`(백엔드)·`dnd-project`(프론트)로 함께 개발하던 서비스입니다. 2026-11-09에 커밋 이력을 유지한 채 별도 저장소로 분리했습니다.
+   - `dnd-project` → `dnfParty`: 2020년의 던파 파티·시세 도구(Neople API)를 2025년에 Spring Boot 3 + Vue 3로 새로 만든 것이 dnfParty입니다.
 2. **플랫폼과 그 위에 올라갈 게임**
    - `game-vault`는 게임 로직 없이 인증·세이브·계정 데이터·실시간 이벤트만 `postMessage` SDK로 제공하는 **포털**입니다.
    - `rolling_vantage/gamevault-handoff/`에는 game-vault의 `GAME_MODULE.md`·`shared/` SDK 타입·`sample-game`이 그대로 복사돼 있습니다. **rolling_vantage는 game-vault에 붙일 첫 외부 게임 모듈 후보**입니다.
@@ -94,7 +98,8 @@ flowchart LR
    - 넥슨 온라인 게임 팬 툴: `dnfParty`(던파) → `mabi-look-matcher`(마비노기).
    - AI 활용: `VRChatAINpc`(2020, 직접 짠 NLP/MSA 구상) → `mafia-game-web`(2026, LLM 에이전트 + RAG).
    - 육성 시뮬레이션: `Lord-s-Daughter`(프린세스 메이커 계열) → `erebos_academy_survival`(학원 육성 + 탄막).
-   - 경제·시뮬레이션: `VRChatAINpc/DnD`(ETF 정보 사이트) → `primacy-index`(지역경제 시뮬레이션 게임).
+   - 경제·시뮬레이션: `dnd-project`의 ETF/펀드 기능, `chatserver`의 etfholdings.co.kr → `primacy-index`(지역경제 시뮬레이션 게임).
+   - 넥슨 게임 도구: `dnd-project`(2020, 던파·마비노기) → `dnfParty`(2025) → `mabi-look-matcher`(2026).
 4. **포크 저장소는 업무와 학습용 참고 자료**: 모니터링(NetApp exporter, SigNoz OTel, Pinpoint Helm), DB/가상화(Tibero Docker, libvirtd), 아키텍처 예제(Spring Boot+Vue, Azure Node+Mongo). 2025년 dnfParty의 Helm 차트 기반 K8s 배포에 이 경험이 쓰인 것으로 보입니다.
 
 ---
@@ -109,18 +114,28 @@ flowchart LR
 - **의미**: 개발 커리어의 출발점입니다.
 
 ### VRChatAINpc
-- **기간**: 2020-03 ~ 2021-02 (커밋 201개로 가장 많음)
+- **기간**: 2020-03 ~ 2021-01 (분리 후 커밋 78개)
 - **목표**: AI가 VRChat에 접속해 대화(한/영/일/중 번역, 문장 분석, 화제 제시)하고 행동(이동·손짓·표정)까지 하게 만들기.
 - **설계**: 신체 기관을 본뜬 마이크로서비스 구조입니다.
   - `VRChatAINpcMain`(Spring Boot 메인/관제), `Body`, `Camera`, `Heart`, `Keyboard`, `Mic`, `Speaker` 모듈
   - Java(Spring Boot) ↔ RabbitMQ ↔ Python(Flask/Django) 언어·청각 서버, 서버마다 MariaDB
-- **곁가지**: 같은 저장소에 `DnDPartes`(Spring Boot + JWT, ETF/펀드 API, IEX 주가 API)와 `dnd-project`(Vue 2 + Vuetify, GCP App Engine 배포)가 함께 있습니다. 마지막 커밋은 "iex api"입니다. **결국 AI NPC보다 ETF 정보 사이트(etfholdings.co.kr) 쪽이 더 진행된 것으로 보입니다.**
+- **상태**: VRChat 모듈은 2020-08 이후 거의 손대지 않았습니다. 같은 저장소에서 실제로 더 많이 진행된 DnD 웹 서비스는 2026-11-09에 [dnd-project](#dnd-project)로 분리했습니다. 분리하면서 이력의 평문 비밀값과 `__pycache__`를 정리해 저장소 크기가 233MB에서 12MB로 줄었습니다.
+
+### dnd-project
+- **기간**: 2020-08 ~ 2021-02 (커밋 120개, VRChatAINpc에서 분리)
+- **설명**: "DnD Projects". 던전앤파이터(DnF) 도구로 시작해 기능을 계속 붙인 개인 웹 서비스입니다.
+  - `party`: Neople Open API(경매장·아바타 마켓·캐릭터), 캐릭터 검색, 파티 구성, TensorFlow 캐릭터 스펙 분석 실험
+  - `gallery`: 게시판·댓글·그룹·채팅·포인트·회원, Tess4J OCR
+  - `fund`: ETF/펀드 정보(IEX Cloud API)
+  - `mabinogi`: 은행 슬롯·캐릭터·훈련 도구, 셀레니움 크롤링
+- **스택**: `backend/` Spring Boot 2.3 + Java 11 + JPA/MyBatis + MySQL + JWT, `frontend/` Vue 2 + Vuetify 2 + Vuex, GCP App Engine 배포.
+- **관계**: 2025년 [dnfParty](#dnfparty)의 전신입니다.
 
 ### chatserver
 - **기간**: 2021-03 ~ 2021-09
 - **설명**: "학원 프로젝트 - chatting server (websocket 학습용)". Express + socket.io 단일 `app.js`. 사용자 목록과 메시지 기록을 메모리에 두는 단순 채팅 서버입니다.
 - **배포 메모**(`server.md`): GCP Compute/App Engine 방화벽 설정, Oracle Cloud VM, pm2 사용법.
-- **관계**: 허용 Origin이 `etfholdings.co.kr`이므로 VRChatAINpc 안의 DnD ETF 사이트용 채팅 서버입니다.
+- **관계**: 허용 Origin이 `etfholdings.co.kr`입니다. dnd-project에도 ETF 기능이 있지만 dnd-project 이력에는 이 도메인이 나오지 않습니다. 그래서 dnd-project가 끝난 뒤(2021-03) 만든 별도 ETF 사이트용으로 봅니다.
 
 ### kalraid
 - GitHub 프로필용 특수 저장소입니다. 기본 템플릿 상태이고 블로그 제작 참고 링크가 하나 있습니다.
@@ -180,12 +195,12 @@ flowchart LR
 - **관계**: `gamevault-handoff/`에 game-vault SDK 계약이 복사돼 있으므로 **game-vault 위에서 돌아갈 게임 모듈**로 계획된 것입니다.
 
 ### Lord-s-Daughter 🔒
-- **기간**: 2026-04-21 ~ 2026-07 (커밋 1547개로 압도적 1위, 7월 이후만 82개)
+- **기간**: 2026-04-21 ~ 2026-07-21 (커밋 1586개로 압도적 1위, 7월 이후만 121개)
 - **설명**: 2D 육성 시뮬레이션 기반 RPG + 전략 시뮬 복합 게임입니다. 10~18세(8년) 동안 육성 시뮬, 비주얼 노벨, RPG 탐험·전투, 영지경영·전략 레이어가 순서대로 펼쳐집니다. 모티브는 프린세스 메이커 4, Victoria 3, 삼국지 13, 문명 6입니다.
 - **계기**: 기다리던 *프린세스 메이커: 예언의 아이들*이 사실상 무산되자 "내가 직접 만들겠다"며 시작했습니다.
 - **기술 변화**: Godot 4(GDScript 125개, 씬 74개)로 시작했다가 2026-07-06 ADR-0034로 **웹(React 18 + PixiJS 8 + Vite)으로 전환**했습니다. 작업 브랜치는 `pivot/web-migration`, 코드는 `web/src/`입니다.
 - **개발 방식**: `ROLES/`에 역할(orchestrator, web_common, web_frontend, web_logic, qa, sound, visual_gen, content_event)을 정의하고, Claude·Codex·Cursor·Gemini 같은 여러 AI 에이전트가 역할별로 작업하는 **멀티 에이전트 개발 체계**입니다(`AGENTS.md`, `CLAUDE.md`, `CODEX.md`, `CURSOR.md`, `GEMINI.md`). 커밋 접두어 `WC-`/`WF-`/`WL-`로 역할을 구분합니다.
-- **진행도**: Z_DOC/TODO 37/43, 설계 질의 TODO_GRILL 8/15.
+- **진행도**: 웹 역할 TODO 79/85, Z_DOC/TODO 39/48, 도트 TODO_DOT 32/120, 사운드 1/13, 설계 질의 TODO_GRILL 10/16.
 
 ### erebos_academy_survival 🔒
 - **기간**: 2026-07-27 ~ 2026-08 (커밋 103개)
@@ -196,12 +211,12 @@ flowchart LR
 - **진행도**: POC TODO 71/72 완료, 설계 GRILL 29/204.
 
 ### primacy-index 🔒
-- **기간**: 2026-08-12~ (커밋 5개, 막 시작함)
+- **기간**: 2026-08-12 ~ 2026-08-16 (커밋 91개, 닷새 만에 Sprint 0 완료)
 - **설명**: 17개 광역·226개 기초자치단체 전부의 노동자·기업·산업·주택·재정을 **논문 기반 경제모형**(Hopenhayn 진입·퇴출, 신경제지리학 집적 티핑, 신용제약형 주택시장 등)으로 계산하는 지역경제 시뮬레이션 게임입니다. 반도체·AI/SW·자동차 3개 특화산업은 앵커도시에서 전체 방정식으로 계산하고, 나머지 지역은 범용 1/2/3차 산업 모델을 씁니다. Steam(PC)에 먼저 출시할 계획입니다.
 - **이름 변천**: GRAVITY: Korea → GRAVITAS → PRIMACY INDEX (상표 충돌 위험 때문, ADR-0015/0016).
 - **스택**: Godot + C# 코어 엔진(ADR-0009), 결정론과 레이어 경계 강제(ADR-0025).
-- **문서**: ADR 25개(전 저장소 중 최다), 경제모형 명세, UI 초안, 이론 참고 목록.
-- **진행도**: Sprint 0 1단계 완료(상태 모델, GravityKernel, 테스트 인프라).
+- **문서**: ADR 40개(전 저장소 중 최다), 경제모형 명세, UI 초안, 이론 참고 목록, Godot 청사진(`docs/godot-blueprint/`), DLC 백로그.
+- **진행도**: Sprint 0 승인기준 17/17 완료(헤드리스 Godot 실행, 결정성·벤치마크 검증). 이후 UI 셸과 페르소나(게이머 알파테스트) 리뷰 수정, ADR-0040 이론 재검증 백로그 6/9 구현.
 
 ---
 
@@ -225,7 +240,7 @@ flowchart LR
 ## 5. 흐름과 패턴
 
 1. **입문 (2018)**: 학원 팀 프로젝트로 Java/Spring MVC/JSP를 익혔습니다.
-2. **사이드 프로젝트 (2020~2022)**: MSA·메시지큐(VRChatAINpc), 실시간 통신(chatserver), 크롤링+통계 서비스(HoloLibrary)처럼 의욕적인 구조를 시도했습니다. 다만 대부분 완성 전에 중단됐습니다.
+2. **사이드 프로젝트 (2020~2022)**: MSA·메시지큐(VRChatAINpc), 게임 API·커뮤니티 웹 서비스(dnd-project), 실시간 통신(chatserver), 크롤링+통계 서비스(HoloLibrary)처럼 의욕적인 구조를 시도했습니다. 다만 대부분 완성 전에 중단됐습니다.
 3. **인프라 공백기 (2023~2024)**: 개인 프로젝트 대신 업무 관련 포크(모니터링, K8s)가 늘었습니다.
 4. **AI 코딩 에이전트 시대 (2025~2026)**: 프로젝트 수와 완성도가 함께 올랐습니다.
    - 2025년: 게임(HoloThello)과 게임 팬 툴(dnfParty)을 실제 배포 수준까지 만들었습니다.

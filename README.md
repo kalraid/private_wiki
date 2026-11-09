@@ -6,18 +6,18 @@
 - 저장소별 상세 분석과 관계도: [repos/README.md](repos/README.md)
 - 진행도 측정 스크립트: [scripts/measure.sh](scripts/measure.sh)
 
-> 마지막 측정: **2026-11-09** (공개 저장소 + 로컬에 있는 private 저장소 3개)
+> 마지막 측정: **2026-11-09** (공개 저장소 + private 저장소 3개는 로컬 클론의 원격 추적 브랜치 기준)
 
 ## 한눈에 보기
 
 | 🎮 게임용 | 📚 학습용 | 💼 업무용 | 합계 |
 |:---:|:---:|:---:|:---:|
-| **9개** · 커밋 1,854 | **6개** · 커밋 682 | **7개** (포크) | **22개** · 커밋 2,536 |
-| 진행 중 9 · 보관 0 | 진행 중 1 · 보관 5 | 참고용 | 진행 중 10 |
+| **10개** · 커밋 2,099 | **6개** · 커밋 559 | **7개** (포크) | **23개** · 커밋 2,658 |
+| 진행 중 9 · 보관 1 | 진행 중 1 · 보관 5 | 참고용 | 진행 중 10 |
 
-- 🎮 **게임용**: Lord-s-Daughter🔒 1547 · erebos_academy_survival🔒 103 · mafia-game-web 94 · dnfParty 53 · HoloThello 16 · game-vault 16 · rolling_vantage 14 · mabi-look-matcher 6 · primacy-index🔒 5
-  (직접 만드는 게임 7개 + 게임 보조 도구 2개 — dnfParty, mabi-look-matcher)
-- 📚 **학습용**: VRChatAINpc 201 · HoloLibrary 174 · Team_Project 151 · HoloLibraryAPI 80 · sound-to-visual-web 39 · chatserver 37
+- 🎮 **게임용**: Lord-s-Daughter🔒 1586 · erebos_academy_survival🔒 103 · primacy-index🔒 91 · mafia-game-web 94 · dnfParty 53 · dnd-project 120 · HoloThello 16 · game-vault 16 · rolling_vantage 14 · mabi-look-matcher 6
+  (직접 만드는 게임 7개 + 게임 보조 도구 3개 — dnd-project, dnfParty, mabi-look-matcher)
+- 📚 **학습용**: HoloLibrary 174 · Team_Project 151 · HoloLibraryAPI 80 · VRChatAINpc 78 · sound-to-visual-web 39 · chatserver 37
 - 💼 **업무용**: netapp-api-exporter · signoz-otel-collector · pinpoint-helm-chart · tibero-docker · skb-libvirtd · spring-boot-vuejs · msdocs-nodejs-mongodb-azure-sample-app (모두 포크, 직접 커밋 없음)
 - 커밋 수는 저장소 전체 커밋 수입니다(AI 에이전트 커밋 포함). 프로필(kalraid)과 이 위키는 집계에서 뺐습니다.
 
@@ -25,9 +25,9 @@
 
 | 프로젝트 | 상태 | 진행도 | 측정 근거 | 마지막 커밋 | 다음 할 일 |
 |---|---|---|---|---|---|
-| [primacy-index](https://github.com/kalraid/primacy-index) 🔒 | 🟡 착수 | Sprint 0-1 ✅ | 커밋 5 · ADR 25 (TODO 문서 없음) | 2026-08-12 | Sprint 0 2단계 (경제 엔진 확장) |
+| [primacy-index](https://github.com/kalraid/primacy-index) 🔒 | 🟡 Sprint 1 진행 | Sprint 0 ✅ / ADR-0040 백로그 `███████░░░` 67% | Sprint 0 승인기준 17/17 · ADR-0040 백로그 6/9 · ADR 40 · 커밋 91 | 2026-08-16 | ADR-0040 잔여 3개 (MPC 재정승수, 신규공급 가격반응식, 임금 캘리브레이션 감사) |
 | [erebos_academy_survival](https://github.com/kalraid/erebos_academy_survival) 🔒 | 🟡 POC 완료 | POC `██████████` 98% / 설계 14% | TODO 71/72 · GRILL 29/204 | 2026-08-10 | 설계 질의(GRILL) 정리 → 본 구현 |
-| [Lord-s-Daughter](https://github.com/kalraid/Lord-s-Daughter) 🔒 | 🟡 웹 전환 중 | 웹 `█████████░` 93% | 웹 역할 TODO 56/60 · Z_DOC 37/43 · 도트 0/120 · 사운드 1/13 | 2026-07-09 | web_logic 잔여 3개, 도트 그래픽·사운드 착수 |
+| [Lord-s-Daughter](https://github.com/kalraid/Lord-s-Daughter) 🔒 | 🟡 웹 전환 중 | 웹 `█████████░` 92% | 웹 역할 TODO 79/85 · Z_DOC 39/48 · 도트 32/120 · 사운드 1/13 | 2026-07-21 | 상점 카탈로그 병합 버그(WL-18), web_frontend 잔여 4개, 도트 그래픽 계속·사운드 착수 |
 | [game-vault](https://github.com/kalraid/game-vault) | 🟡 일시정지 | `██████████` 95% | TODO 20/21 | 2026-07-08 | 남은 TODO 1개, 첫 게임 모듈 연동 |
 | [rolling_vantage](https://github.com/kalraid/rolling_vantage) | 🟡 설계 중 | `███░░░░░░░` 32% | GRILL_TODO 32/100 (설계 질의) | 2026-07-21 | 설계 질의 정리 → 구현 착수 |
 | [sound-to-visual-web](https://github.com/kalraid/sound-to-visual-web) | 🟡 일시정지 | `█████████░` 92% | TODO 49/53 | 2026-06-25 | 남은 TODO 4개, Phase 1.5(곡 검색) |
@@ -42,8 +42,9 @@
 |---|---|---|---|
 | [HoloLibraryAPI](https://github.com/kalraid/HoloLibraryAPI) | ⚫ 중단 | 2022-10-18 | DB 비동기 처리 작업 중 멈춤 |
 | [HoloLibrary](https://github.com/kalraid/HoloLibrary) | ⚫ 중단 | 2022-02-25 | HoloLibraryAPI의 프론트엔드 |
-| [chatserver](https://github.com/kalraid/chatserver) | ⚫ 중단 | 2021-09-14 | ETF 사이트용 채팅 서버 |
-| [VRChatAINpc](https://github.com/kalraid/VRChatAINpc) | ⚫ 중단 | 2021-02-05 | AI NPC + ETF 사이트(DnD) |
+| [chatserver](https://github.com/kalraid/chatserver) | ⚫ 중단 | 2021-09-14 | etfholdings.co.kr용 socket.io 채팅 서버 |
+| [dnd-project](https://github.com/kalraid/dnd-project) | ⚫ 중단 | 2021-02-05 | 던파 파티·시세 + 갤러리 + ETF 웹 서비스 (2026-11-09 VRChatAINpc에서 분리) |
+| [VRChatAINpc](https://github.com/kalraid/VRChatAINpc) | ⚫ 중단 | 2021-01-05 | VRChat AI NPC 모듈 (DnD 분리 후) |
 | [Team_Project](https://github.com/kalraid/Team_Project) | ⚫ 완료 | 2024-07-24 (README) | 학원 팀 프로젝트 |
 
 ## 측정 기준
@@ -56,7 +57,8 @@
   - 🟡 일시정지: 1년 안에 커밋 있음
   - ⚫ 중단/보관: 1년 넘게 커밋 없음
   - ✅ 완료: 목표(제출·배포)를 달성함
-- 🔒 표시는 private 저장소입니다. GitHub API로 볼 수 없어서 `D:\sources`의 로컬 클론(현재 체크아웃 브랜치)으로 측정합니다.
+- 🔒 표시는 private 저장소입니다. GitHub API로 볼 수 없어서 `D:\sources`의 로컬 클론을 `git fetch`한 뒤 **원격 추적 브랜치**(`@{u}`)를 임시 폴더에 꺼내 측정합니다. 로컬 작업 폴더는 건드리지 않습니다.
+- primacy-index는 TODO 문서가 없어서 `docs/godot-blueprint/sprint0-checklist-status.md`(Sprint 0 승인기준)와 ADR-0040 우선순위 백로그(커밋 메시지의 `ADR0040 n순위`)로 잽니다.
 - 한 저장소에 TODO 문서가 여러 개면 목적별로 따로 표기합니다(구현 TODO와 설계 질의 GRILL 구분).
 
 ## 측정 이력
@@ -66,3 +68,5 @@
 | 2026-11-09 | 대시보드 첫 작성 (공개 저장소 13개 분석) |
 | 2026-11-09 | private 저장소 3개 추가 (Lord-s-Daughter, erebos_academy_survival, primacy-index) |
 | 2026-11-09 | 경력 요약 페이지 추가 (career/README.md) |
+| 2026-11-09 | VRChatAINpc에서 DnD 프로젝트를 dnd-project 저장소로 분리, 집계 반영 |
+| 2026-11-09 | 재측정: private 저장소를 원격 최신 기준으로 측정 (primacy-index 커밋 5→91·Sprint 0 완료, Lord-s-Daughter 웹 79/85·도트 32/120). public 저장소는 변동 없음 |
