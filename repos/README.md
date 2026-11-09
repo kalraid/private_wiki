@@ -218,7 +218,7 @@ flowchart LR
 | spring-boot-vuejs | jonashackt/spring-boot-vuejs | Spring Boot + Vue 통합 예제 |
 | msdocs-nodejs-mongodb-azure-sample-app | Azure-Samples/… | Azure App Service + Cosmos DB 예제 |
 
-2023~2024년 포크는 대부분 **모니터링/APM, K8s, 국산 DB, 가상화**입니다. 이 시기에는 인프라·운영(SRE) 쪽 업무를 한 것으로 보입니다.
+2023~2024년 포크는 대부분 **모니터링/APM, K8s, 국산 DB, 가상화**입니다. 이 시기에 Cloud PC 모니터링·SRE 업무(개발서버 CI/CD, Tempo helm chart, OTEL 수집)를 했습니다 — [경력 요약](../career/README.md) 참고.
 
 ---
 

@@ -2,6 +2,7 @@
 
 `kalraid`의 개인 프로젝트들이 얼마나 진행됐는지 재고 관리하는 대시보드입니다.
 
+- 경력 요약(업무): [career/README.md](career/README.md)
 - 저장소별 상세 분석과 관계도: [repos/README.md](repos/README.md)
 - 진행도 측정 스크립트: [scripts/measure.sh](scripts/measure.sh)
 
@@ -64,3 +65,4 @@
 |---|---|
 | 2026-11-09 | 대시보드 첫 작성 (공개 저장소 13개 분석) |
 | 2026-11-09 | private 저장소 3개 추가 (Lord-s-Daughter, erebos_academy_survival, primacy-index) |
+| 2026-11-09 | 경력 요약 페이지 추가 (career/README.md) |
