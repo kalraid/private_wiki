@@ -11,7 +11,8 @@
 |---|---|---|---|---|
 | 2018 | [Team_Project](#team_project) | 학원 시절 팀 프로젝트 모음 (의약품/건강 정보 사이트) | Java, Spring MVC, JSP | 151 |
 | 2020 | [VRChatAINpc](#vrchatainpc) | VRChat을 AI가 플레이하게 만드는 MSA 실험 | Spring Boot, Flask/Django, RabbitMQ | 78 |
-| 2020 | [dnd-project](#dnd-project) | 던전앤파이터 파티·시세 도구 + 갤러리 커뮤니티 + ETF·마비노기 (VRChatAINpc에서 분리) | Spring Boot 2.3, Vue 2, Vuetify, MySQL | 120 |
+| 2020 | [dnd-project](#dnd-project) | 던전앤파이터 파티·시세 도구 + 갤러리 커뮤니티 (VRChatAINpc에서 분리) | Spring Boot 2.3, Vue 2, Vuetify, MySQL | 120 |
+| 2021 | [etfholdings](#etfholdings) | ETF 정보 사이트용 IEX Cloud API 연동 뼈대 (dnd-project에서 분리) | Spring Boot | 2 |
 | 2021 | [chatserver](#chatserver) | socket.io 채팅 서버 (etfholdings.co.kr용) | Node.js, Express, socket.io | 37 |
 | 2021 | [kalraid](#kalraid) | GitHub 프로필 README | Markdown | 2 |
 | 2021 | [HoloLibrary](#hololibrary--hololibraryapi) | 홀로라이브 트위터/유튜브 라이브러리 **프론트엔드** (포크 기반) | Vue 2, Vuetify | 174 |
@@ -19,7 +20,7 @@
 | 2025 | [HoloThello](#holothello) | 오셀로 + 격투 HP 대전 캐주얼 게임 | Unity (C#) | 16 |
 | 2025 | [dnfParty](#dnfparty) | 던전앤파이터 레이드 파티 관리·최적화 서비스 | Spring Boot 3, Vue 3, MariaDB, Helm/K8s | 53 |
 | 2026 | [mafia-game-web](#mafia-game-web) | AI 플레이어와 하는 웹 마피아 게임 (AI 부트캠프 최종 과제) | FastAPI, LangGraph, Claude API, Streamlit, Redis, ChromaDB | 94 |
-| 2026 | [mabi-look-matcher](#mabi-look-matcher) | 참고 사진을 넣으면 마비노기 의상 후보를 찾아 입혀 보는 서비스 | FastAPI, Next.js, Gemini/CLIP | 6 |
+| 2026 | [mabi-look-matcher](#mabi-look-matcher) | 참고 사진을 넣으면 마비노기 의상 후보를 찾아 입혀 보는 서비스 | FastAPI, Next.js, Gemini/CLIP | 7 |
 | 2026 | [sound-to-visual-web](#sound-to-visual-web) | MIDI/MusicXML을 3D 지형+큐브로 시각화 | FastAPI, music21, Three.js, Tone.js | 39 |
 | 2026 | [game-vault](#game-vault) | 브라우저 게임용 포털 (인증·세이브·실시간 SDK) | Vite+React, Express, Prisma, SQLite | 16 |
 | 2026 | [rolling_vantage](#rolling_vantage) | 그리드 소환 전술 + 주사위 판정을 섞은 웹 게임 (설계 단계) | TypeScript (설계 문서 위주) | 14 |
@@ -40,7 +41,8 @@ flowchart LR
 
   subgraph S2["② 사이드 프로젝트기 (2020~2022)"]
     VR[VRChatAINpc]
-    DND[dnd-project<br/>던파·갤러리·ETF]
+    DND[dnd-project<br/>던파·갤러리]
+    ETF[etfholdings<br/>ETF 정보]
     CS[chatserver]
     HL[HoloLibrary<br/>front]
     HLA[HoloLibraryAPI<br/>back]
@@ -72,6 +74,9 @@ flowchart LR
 
   VR -- "2026-11 이력 유지 분리" --> DND
   DND -. "던파 도구의 후속" .-> DNF
+  DND -- "2026-11 ETF 코드 분리" --> ETF
+  DND -. "마비노기 초안 → legacy/" .-> MABI
+  ETF -. "같은 사이트(etfholdings.co.kr)" .-> CS
   INS -- "관리자 템플릿 포크" --> HL
   HL -- "REST API 호출" --> HLA
   HL -. "홀로라이브 테마" .-> HT
@@ -98,8 +103,8 @@ flowchart LR
    - 넥슨 온라인 게임 팬 툴: `dnfParty`(던파) → `mabi-look-matcher`(마비노기).
    - AI 활용: `VRChatAINpc`(2020, 직접 짠 NLP/MSA 구상) → `mafia-game-web`(2026, LLM 에이전트 + RAG).
    - 육성 시뮬레이션: `Lord-s-Daughter`(프린세스 메이커 계열) → `erebos_academy_survival`(학원 육성 + 탄막).
-   - 경제·시뮬레이션: `dnd-project`의 ETF/펀드 기능, `chatserver`의 etfholdings.co.kr → `primacy-index`(지역경제 시뮬레이션 게임).
-   - 넥슨 게임 도구: `dnd-project`(2020, 던파·마비노기) → `dnfParty`(2025) → `mabi-look-matcher`(2026).
+   - 경제·시뮬레이션: `etfholdings`(IEX Cloud API), `chatserver`의 etfholdings.co.kr → `primacy-index`(지역경제 시뮬레이션 게임).
+   - 넥슨 게임 도구: `dnd-project`(2020, 던파) → `dnfParty`(2025) → `mabi-look-matcher`(2026). 2020년 마비노기 도구 초안은 `mabi-look-matcher/legacy/`에 있습니다.
 4. **포크 저장소는 업무와 학습용 참고 자료**: 모니터링(NetApp exporter, SigNoz OTel, Pinpoint Helm), DB/가상화(Tibero Docker, libvirtd), 아키텍처 예제(Spring Boot+Vue, Azure Node+Mongo). 2025년 dnfParty의 Helm 차트 기반 K8s 배포에 이 경험이 쓰인 것으로 보입니다.
 
 ---
@@ -124,18 +129,22 @@ flowchart LR
 ### dnd-project
 - **기간**: 2020-08 ~ 2021-02 (커밋 120개, VRChatAINpc에서 분리)
 - **설명**: "DnD Projects". 던전앤파이터(DnF) 도구로 시작해 기능을 계속 붙인 개인 웹 서비스입니다.
-  - `party`: Neople Open API(경매장·아바타 마켓·캐릭터), 캐릭터 검색, 파티 구성, TensorFlow 캐릭터 스펙 분석 실험
+  - `party`: Neople Open API(경매장·아바타 마켓·캐릭터), 셀레니움 공식 사이트 크롤링(`dndOffApi`), 캐릭터 검색, 파티 구성, TensorFlow 캐릭터 스펙 분석 실험
   - `gallery`: 게시판·댓글·그룹·채팅·포인트·회원, Tess4J OCR
-  - `fund`: ETF/펀드 정보(IEX Cloud API)
-  - `mabinogi`: 은행 슬롯·캐릭터·훈련 도구, 셀레니움 크롤링
 - **스택**: `backend/` Spring Boot 2.3 + Java 11 + JPA/MyBatis + MySQL + JWT, `frontend/` Vue 2 + Vuetify 2 + Vuex, GCP App Engine 배포.
+- **분리**: 함께 들어 있던 ETF 정보 기능(`fund`)은 [etfholdings](#etfholdings)로, 마비노기 도구(`mabinogi`)는 [mabi-look-matcher](#mabi-look-matcher)의 `legacy/mabinogi-tools-2020/`으로 2026-11-10에 옮기고, 이 저장소 이력에서 지웠습니다.
 - **관계**: 2025년 [dnfParty](#dnfparty)의 전신입니다.
+
+### etfholdings
+- **기간**: 2021-02 (커밋 2개, dnd-project에서 분리)
+- **설명**: ETF·펀드 정보 사이트(etfholdings.co.kr)를 만들려고 IEX Cloud API(미국 주식·ETF 시세)를 연동하던 백엔드 뼈대입니다. 엔드포인트 목록과 빈 controller·service만 있고 실제 호출은 구현 전입니다.
+- **관계**: [chatserver](#chatserver)가 이 사이트용 채팅 서버입니다. 사이트 본체(프론트엔드 등) 소스는 찾지 못했습니다.
 
 ### chatserver
 - **기간**: 2021-03 ~ 2021-09
 - **설명**: "학원 프로젝트 - chatting server (websocket 학습용)". Express + socket.io 단일 `app.js`. 사용자 목록과 메시지 기록을 메모리에 두는 단순 채팅 서버입니다.
 - **배포 메모**(`server.md`): GCP Compute/App Engine 방화벽 설정, Oracle Cloud VM, pm2 사용법.
-- **관계**: 허용 Origin이 `etfholdings.co.kr`입니다. dnd-project에도 ETF 기능이 있지만 dnd-project 이력에는 이 도메인이 나오지 않습니다. 그래서 dnd-project가 끝난 뒤(2021-03) 만든 별도 ETF 사이트용으로 봅니다.
+- **관계**: 허용 Origin이 `etfholdings.co.kr`입니다. [etfholdings](#etfholdings)(2021-02)에서 시작한 ETF 사이트에 붙이려던 채팅 서버로 봅니다.
 
 ### kalraid
 - GitHub 프로필용 특수 저장소입니다. 기본 템플릿 상태이고 블로그 제작 참고 링크가 하나 있습니다.
@@ -175,6 +184,7 @@ flowchart LR
 - **설명**: 참고 사진을 올리면 마비노기 장비 슬롯별로 비슷한 아이템 후보 10개 정도를 보여 주고, 기존 캐릭터 시뮬레이터(Sigkill) 위에 입혀서 2D/3D로 미리 볼 수 있게 합니다.
 - **스택**: Python 3.11 패키지(`packages/look_matcher`: analysis, vision, catalog_store, candidate_builder, embedding_rank) + FastAPI + Next.js. Gemini Vision / CLIP / Redis를 쓰지만, mock 모드에서는 셋 다 없이 동작합니다.
 - **문서화**: `CONTEXT.md`(도메인 용어집) + ADR 13개 + PRD + 이슈 백로그.
+- **legacy**: `legacy/mabinogi-tools-2020/`에 2020년 dnd-project에서 옮겨 온 마비노기 캐릭터·인벤토리·수련 관리 도구 초안(Spring Boot JPA 엔티티)이 있습니다. 본 기능과는 별개입니다.
 
 ### sound-to-visual-web
 - **기간**: 2026-06

@@ -12,12 +12,12 @@
 
 | 🎮 게임용 | 📚 학습용 | 💼 업무용 | 합계 |
 |:---:|:---:|:---:|:---:|
-| **10개** · 커밋 2,099 | **6개** · 커밋 559 | **7개** (포크) | **23개** · 커밋 2,658 |
-| 진행 중 9 · 보관 1 | 진행 중 1 · 보관 5 | 참고용 | 진행 중 10 |
+| **10개** · 커밋 2,100 | **7개** · 커밋 561 | **7개** (포크) | **24개** · 커밋 2,661 |
+| 진행 중 9 · 보관 1 | 진행 중 1 · 보관 6 | 참고용 | 진행 중 10 |
 
-- 🎮 **게임용**: Lord-s-Daughter🔒 1586 · erebos_academy_survival🔒 103 · primacy-index🔒 91 · mafia-game-web 94 · dnfParty 53 · dnd-project 120 · HoloThello 16 · game-vault 16 · rolling_vantage 14 · mabi-look-matcher 6
+- 🎮 **게임용**: Lord-s-Daughter🔒 1586 · erebos_academy_survival🔒 103 · primacy-index🔒 91 · mafia-game-web 94 · dnfParty 53 · dnd-project 120 · HoloThello 16 · game-vault 16 · rolling_vantage 14 · mabi-look-matcher 7
   (직접 만드는 게임 7개 + 게임 보조 도구 3개 — dnd-project, dnfParty, mabi-look-matcher)
-- 📚 **학습용**: HoloLibrary 174 · Team_Project 151 · HoloLibraryAPI 80 · VRChatAINpc 78 · sound-to-visual-web 39 · chatserver 37
+- 📚 **학습용**: HoloLibrary 174 · Team_Project 151 · HoloLibraryAPI 80 · VRChatAINpc 78 · sound-to-visual-web 39 · chatserver 37 · etfholdings 2
 - 💼 **업무용**: netapp-api-exporter · signoz-otel-collector · pinpoint-helm-chart · tibero-docker · skb-libvirtd · spring-boot-vuejs · msdocs-nodejs-mongodb-azure-sample-app (모두 포크, 직접 커밋 없음)
 - 커밋 수는 저장소 전체 커밋 수입니다(AI 에이전트 커밋 포함). 프로필(kalraid)과 이 위키는 집계에서 뺐습니다.
 
@@ -31,7 +31,7 @@
 | [game-vault](https://github.com/kalraid/game-vault) | 🟡 일시정지 | `██████████` 95% | TODO 20/21 | 2026-07-08 | 남은 TODO 1개, 첫 게임 모듈 연동 |
 | [rolling_vantage](https://github.com/kalraid/rolling_vantage) | 🟡 설계 중 | `███░░░░░░░` 32% | GRILL_TODO 32/100 (설계 질의) | 2026-07-21 | 설계 질의 정리 → 구현 착수 |
 | [sound-to-visual-web](https://github.com/kalraid/sound-to-visual-web) | 🟡 일시정지 | `█████████░` 92% | TODO 49/53 | 2026-06-25 | 남은 TODO 4개, Phase 1.5(곡 검색) |
-| [mabi-look-matcher](https://github.com/kalraid/mabi-look-matcher) | 🟡 MVP 완료 | MVP ✅ / 후속 0% | 후속 백로그 0/23 | 2026-05-22 | mock → 실제 Gemini·CLIP 연결 |
+| [mabi-look-matcher](https://github.com/kalraid/mabi-look-matcher) | 🟡 MVP 완료 | MVP ✅ / 후속 0% | 후속 백로그 0/23 | 2026-05-22 (2026-11-10 legacy 이관 커밋 제외) | mock → 실제 Gemini·CLIP 연결 |
 | [mafia-game-web](https://github.com/kalraid/mafia-game-web) | ✅ 제출 완료 | `████████░░` 75% | GAP 보완 계획 12/16 | 2026-04-06 | 보완 계획 잔여 4개 (선택) |
 | [dnfParty](https://github.com/kalraid/dnfParty) | 🟡 운영 후 중단 | `█████░░░░░` 47% | TODO 8/17 (하위 항목 포함) | 2025-09-12 | Advanced 파티 생성, 모바일 반응형 |
 | [HoloThello](https://github.com/kalraid/HoloThello) | 🟡 마무리 단계 | `████████░░` 79% | TODO 178/223 (README 자체 표기 99%) | 2025-09-02 | Unity 에디터 UI 연결, 스프라이트 |
@@ -43,7 +43,8 @@
 | [HoloLibraryAPI](https://github.com/kalraid/HoloLibraryAPI) | ⚫ 중단 | 2022-10-18 | DB 비동기 처리 작업 중 멈춤 |
 | [HoloLibrary](https://github.com/kalraid/HoloLibrary) | ⚫ 중단 | 2022-02-25 | HoloLibraryAPI의 프론트엔드 |
 | [chatserver](https://github.com/kalraid/chatserver) | ⚫ 중단 | 2021-09-14 | etfholdings.co.kr용 socket.io 채팅 서버 |
-| [dnd-project](https://github.com/kalraid/dnd-project) | ⚫ 중단 | 2021-02-05 | 던파 파티·시세 + 갤러리 + ETF 웹 서비스 (2026-11-09 VRChatAINpc에서 분리) |
+| [etfholdings](https://github.com/kalraid/etfholdings) | ⚫ 중단 | 2021-02-05 | ETF 정보 사이트용 IEX Cloud API 연동 뼈대 (2026-11-10 dnd-project에서 분리) |
+| [dnd-project](https://github.com/kalraid/dnd-project) | ⚫ 중단 | 2021-02-05 | 던파 파티·시세 + 갤러리 커뮤니티 웹 서비스 (2026-11-09 VRChatAINpc에서 분리, ETF·마비노기 코드는 2026-11-10 다시 분리) |
 | [VRChatAINpc](https://github.com/kalraid/VRChatAINpc) | ⚫ 중단 | 2021-01-05 | VRChat AI NPC 모듈 (DnD 분리 후) |
 | [Team_Project](https://github.com/kalraid/Team_Project) | ⚫ 완료 | 2024-07-24 (README) | 학원 팀 프로젝트 |
 
@@ -69,4 +70,5 @@
 | 2026-11-09 | private 저장소 3개 추가 (Lord-s-Daughter, erebos_academy_survival, primacy-index) |
 | 2026-11-09 | 경력 요약 페이지 추가 (career/README.md) |
 | 2026-11-09 | VRChatAINpc에서 DnD 프로젝트를 dnd-project 저장소로 분리, 집계 반영 |
+| 2026-11-10 | dnd-project에서 ETF 코드를 etfholdings(새 저장소)로, 마비노기 코드를 mabi-look-matcher `legacy/`로 분리 (dnd-project 이력에서도 제거) |
 | 2026-11-09 | 재측정: private 저장소를 원격 최신 기준으로 측정 (primacy-index 커밋 5→91·Sprint 0 완료, Lord-s-Daughter 웹 79/85·도트 32/120). public 저장소는 변동 없음 |
