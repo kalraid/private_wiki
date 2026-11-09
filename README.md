@@ -7,13 +7,26 @@
 
 > 마지막 측정: **2026-11-09** (공개 저장소 + 로컬에 있는 private 저장소 3개)
 
+## 한눈에 보기
+
+| 🎮 게임용 | 📚 학습용 | 💼 업무용 | 합계 |
+|:---:|:---:|:---:|:---:|
+| **9개** · 커밋 1,854 | **6개** · 커밋 682 | **7개** (포크) | **22개** · 커밋 2,536 |
+| 진행 중 9 · 보관 0 | 진행 중 1 · 보관 5 | 참고용 | 진행 중 10 |
+
+- 🎮 **게임용**: Lord-s-Daughter🔒 1547 · erebos_academy_survival🔒 103 · mafia-game-web 94 · dnfParty 53 · HoloThello 16 · game-vault 16 · rolling_vantage 14 · mabi-look-matcher 6 · primacy-index🔒 5
+  (직접 만드는 게임 7개 + 게임 보조 도구 2개 — dnfParty, mabi-look-matcher)
+- 📚 **학습용**: VRChatAINpc 201 · HoloLibrary 174 · Team_Project 151 · HoloLibraryAPI 80 · sound-to-visual-web 39 · chatserver 37
+- 💼 **업무용**: netapp-api-exporter · signoz-otel-collector · pinpoint-helm-chart · tibero-docker · skb-libvirtd · spring-boot-vuejs · msdocs-nodejs-mongodb-azure-sample-app (모두 포크, 직접 커밋 없음)
+- 커밋 수는 저장소 전체 커밋 수입니다(AI 에이전트 커밋 포함). 프로필(kalraid)과 이 위키는 집계에서 뺐습니다.
+
 ## 진행 중 / 최근 프로젝트
 
 | 프로젝트 | 상태 | 진행도 | 측정 근거 | 마지막 커밋 | 다음 할 일 |
 |---|---|---|---|---|---|
 | [primacy-index](https://github.com/kalraid/primacy-index) 🔒 | 🟡 착수 | Sprint 0-1 ✅ | 커밋 5 · ADR 25 (TODO 문서 없음) | 2026-08-12 | Sprint 0 2단계 (경제 엔진 확장) |
 | [erebos_academy_survival](https://github.com/kalraid/erebos_academy_survival) 🔒 | 🟡 POC 완료 | POC `██████████` 98% / 설계 14% | TODO 71/72 · GRILL 29/204 | 2026-08-10 | 설계 질의(GRILL) 정리 → 본 구현 |
-| [Lord-s-Daughter](https://github.com/kalraid/Lord-s-Daughter) 🔒 | 🟡 웹 전환 중 | `█████████░` 86% | Z_DOC/TODO 37/43 · TODO_GRILL 8/15 | 2026-07-09 | `pivot/web-migration` 브랜치 웹 이식 마무리 |
+| [Lord-s-Daughter](https://github.com/kalraid/Lord-s-Daughter) 🔒 | 🟡 웹 전환 중 | 웹 `█████████░` 93% | 웹 역할 TODO 56/60 · Z_DOC 37/43 · 도트 0/120 · 사운드 1/13 | 2026-07-09 | web_logic 잔여 3개, 도트 그래픽·사운드 착수 |
 | [game-vault](https://github.com/kalraid/game-vault) | 🟡 일시정지 | `██████████` 95% | TODO 20/21 | 2026-07-08 | 남은 TODO 1개, 첫 게임 모듈 연동 |
 | [rolling_vantage](https://github.com/kalraid/rolling_vantage) | 🟡 설계 중 | `███░░░░░░░` 32% | GRILL_TODO 32/100 (설계 질의) | 2026-07-21 | 설계 질의 정리 → 구현 착수 |
 | [sound-to-visual-web](https://github.com/kalraid/sound-to-visual-web) | 🟡 일시정지 | `█████████░` 92% | TODO 49/53 | 2026-06-25 | 남은 TODO 4개, Phase 1.5(곡 검색) |
